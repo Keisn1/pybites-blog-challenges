@@ -1,0 +1,29 @@
+* First Try
+
+Without looking at the video just make it work. Try to use some collection tools and other python
+native modules (itertools). Didn't do any tests
+
+By looking at code of other people:
+- They used namedtuple for Movies
+- For printing they used something called fmt_movie_entry
+- They used the template pre-given
+- what they used to clean the data
+  - replace some unicode \xa0
+
+** Now watch the video
+
+- convert data into defaultdict, directors to movie_namedtuples
+  #+begin_src python
+    Movie = namedtuple('Movie', 'title year score')  # named tuple for movie
+
+    director = line['director_name']
+    movie = line['movie_title'].replace('\xa0', '').replace('\xc2', '')
+    year = int(line['title_year'])  # converting to int
+    score = float(line['imdb_score'])  # converting to float
+
+    except ValueError:
+        continue                    # we're not interested in any incomplete data
+
+
+  #+end_src
+
